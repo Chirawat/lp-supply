@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\AutoComplete;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Documents */
@@ -12,13 +13,23 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'doc_date')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'doc_date')->widget(\yii\jui\DatePicker::class, [
+        'language' => 'th',
+        'dateFormat' => 'dd-MM-yyyy',
+    ]) ?>
 
-    <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'type')->dropDownList([
+        'JS' => 'จัดซื้อ',
+        'JJ' => 'จัดจ้าง',
+    ]);?>
 
     <?= $form->field($model, 'plan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'from')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'from')->widget(\yii\jui\AutoComplete::classname(), [
+        'clientOptions' => [
+            'source' => array_column($suppliers, 'name'),
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'do')->textarea(['rows' => 6]) ?>
 

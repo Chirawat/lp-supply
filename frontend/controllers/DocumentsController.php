@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Documents;
+use frontend\models\Supplier;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,6 +66,7 @@ class DocumentsController extends Controller
     public function actionCreate()
     {
         $model = new Documents();
+        $suppliers = Supplier::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +74,7 @@ class DocumentsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'suppliers' => $suppliers,
         ]);
     }
 
