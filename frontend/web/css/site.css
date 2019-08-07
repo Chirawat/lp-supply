@@ -124,18 +124,4 @@ a.desc:after {
     white-space:nowrap;
 } */
 
-table, th, td {
-    /* border: 1px solid black; */
-    line-height: 18px;
-}
 
-.border1px tr td {
-    border: 1px solid black;
-}
-table {
-    border-collapse: collapse;
-}
-p{
-    line-height: normal;
-    text-align: justify;
-}

@@ -50,7 +50,6 @@ $formatter = \Yii::$app->formatter;
         <td>ผู้อำนวยการโรงเรียนลิ้นฟ้าพิทยาคม</td>
     </tr>
 </table>
-<p></p>
 <p style="text-indent: 2.5cm;">
     ด้วยโรงเรียนลิ้นฟ้าพิทยาคม  ได้ดำเนินการซื้อ <?=$document->do?> จาก <?=$document->supplier->name?> จำนวน <?=$description_count?> รายการ เป็นจำนวนเงิน <?=$formatter->asDecimal($total)?> บาท (<?= $bahttext ?>)  ตามใบเสร็จรับเงินเลขที่ <?=$document->invoice_id?> ลงวันที่ <?=$document->invoice_date?> เพื่อ<?=$document->for?>
 </p>
@@ -58,7 +57,7 @@ $formatter = \Yii::$app->formatter;
     ทั้งนี้  การดำเนินการจัดซื้อดังกล่าว เป็นการดำเนินการตามหนังสือด่วนที่สุด ที่ กค (กวจ) 0405.2/ว 119  ลงวันที่ 7 มีนาคม 2561 เรื่อง แนวทางการปฏิบัติในการดำเนินการจัดหาพัสดุที่เกี่ยวกับ ค่าใช้จ่ายในการบริหารงาน ค่าใช้จ่ายในการฝึกอบรม การจัดงาน และการประชุมของหน่วยงานของรัฐ
 </p>
 <p style="text-indent: 2.5cm;">
-    จึงเรียนมาเพื่อโปรดพิจารณาให้ความเห็นชอบและอนุมัติเงิน  ทั้งนี้ให้ถือรายงานฉบับนี้ เป็นหลักฐานการตรวจรับพัสดุ โดยอนุโลม
+    จึงเรียนมาเพื่อโปรดพิจารณาให้ความเห็นชอบและอนุมัติเงิน  ทั้งนี้ให้ถือรายงานฉบับนี้เป็น หลักฐานการตรวจรับ พัสดุโดยอนุโลม
 </p>
 <br>
 <br>
@@ -74,9 +73,9 @@ $formatter = \Yii::$app->formatter;
 <p style="padding-left: 2cm; margin: 0px;">
     <?=$document->advance_by?> ผู้ทดรองจ่าย
 </p>
-<p style="padding-left: 5cm; margin: 0px;">(ลงชื่อ)............................เจ้าหน้าที่</p>
-<p style="padding-left: 5cm; margin: 0px;">(ลงชื่อ)............................หัวหน้าเจ้าหน้าที่</p>
-<p style="padding-left: 5cm; margin: 0px;">(ลงชื่อ)............................หัวหน้าฝ่ายอำนวยการ</p>
+<p style="padding-left: 5cm;">(ลงชื่อ)............................เจ้าหน้าที่</p>
+<p style="padding-left: 5cm;">(ลงชื่อ)............................หัวหน้าเจ้าหน้าที่</p>
+<p style="padding-left: 5cm;">(ลงชื่อ)............................หัวหน้าฝ่ายอำนวยการ</p>
 <p style="padding-left: 6cm; margin: 0px;">(นางวิลัย  ชิณวงศ์)</p>
 <p style="padding-left: 8.5cm; margin: 0px;">- เห็นชอบ</p>
 <p style="padding-left: 8.5cm; margin: 0px;">- อนุมัติ</p>
@@ -86,17 +85,18 @@ $formatter = \Yii::$app->formatter;
 <p style="padding-left: 7.8cm; margin: 0px;">วันที่ <?=$document->doc_date?></p>
 
 
-<div className="page-break"></div>
+<pagebreak />
 
-<table>
+<table width="100%">
     <tr>
-        <td align="center" style="font-size: 24px; font-weight: bold;">
+        <td align="center" style="font-size: 32px; font-weight: bold;">
             ใบเบิกพัสดุ
         </td>
     </tr>
     <tr>
         <td align="center" style="line-height:25px">
-            ตามระเบียบกระทรวงการคลัง ว่าด้วยการจัดซื้อจัดจ้างและการบริหารพัสดุภาครัฐ พ.ศ.2560<br>ข้อ 204 และข้อ 206
+            ตามระเบียบกระทรวงการคลัง ว่าด้วยการจัดซื้อจัดจ้างและการบริหารพัสดุภาครัฐ พ.ศ.2560<br>
+            ข้อ 204 และข้อ 206
         </td>
     </tr>
 </table>
@@ -111,8 +111,9 @@ $formatter = \Yii::$app->formatter;
         <td>
     </tr>
 </table>
-<br>
-ข้าพเจ้าขอเบิกพัสดุซื้อวัสดุ ในรายการ<?=$document->plan?>  ตามรายการดังต่อไปนี้
+<p style="text-indent: 2.5cm; padding-bottom: 6pt;">
+    ข้าพเจ้าขอเบิกพัสดุซื้อวัสดุ ในรายการ<?=$document->plan?>  ตามรายการดังต่อไปนี้
+</p>
 <table width="100%" class="border1px">
     <tr>
         <td align="center" style="line-height:30px">ลำดับ</td>
@@ -124,7 +125,7 @@ $formatter = \Yii::$app->formatter;
     </tr>
     <?php $i=1; foreach($descriptions as $description):?>
         <tr>
-            <td align="center" style="line-height:30px"><?=$i++?></td>
+            <td align="center" style="line-height:20px"><?=$i++?></td>
             <td>&nbsp;<?=$description->item?></td>
             <td align="center"><?=$description->quantity?></td>
             <td align="center"><?=$description->unit?></td>
@@ -155,7 +156,7 @@ $formatter = \Yii::$app->formatter;
     
     <tr>
         <td align="center">
-            ตำแหน่ง .......
+            ตำแหน่ง <?=$document->position?>
         </td>
         <td align="center">
             หัวหน้าเจ้าหน้าที่
