@@ -68,10 +68,18 @@ class DocumentsController extends Controller
         $model = new Documents();
         $suppliers = Supplier::find()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())){ 
+            // var_dump(Yii::$app->request->post());
+            // die();
+            $supplier = Supplier::find()->where([
+                'name' => Yii::$app->request->post('Documents')['supplier'],
+            ])->one();
+            $model->supplier_id = $supplier['id'];
+            if($model->validate()){
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
-
         return $this->render('create', [
             'model' => $model,
             'suppliers' => $suppliers,
@@ -88,6 +96,7 @@ class DocumentsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $suppliers = Supplier::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -95,6 +104,7 @@ class DocumentsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'suppliers' => $suppliers,
         ]);
     }
 

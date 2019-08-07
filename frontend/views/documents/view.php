@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('report', ['report', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('report', ['report/document-report', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'doc_date',
             'type',
             'plan',
-            'from',
+            //'from',
             'do:ntext',
             'supplier_id',
             'amt',

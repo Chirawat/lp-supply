@@ -25,15 +25,13 @@ use yii\jui\AutoComplete;
 
     <?= $form->field($model, 'plan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'from')->widget(\yii\jui\AutoComplete::classname(), [
-        'clientOptions' => [
-            'source' => array_column($suppliers, 'name'),
-        ],
-    ]) ?>
-
     <?= $form->field($model, 'do')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'supplier_id')->textInput() ?>
+    <?= $form->field($model, 'supplier')->widget(\yii\jui\AutoComplete::classname(), [
+        'clientOptions' => [
+            'source' => array_column($suppliers,'name'),
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'amt')->textInput() ?>
 

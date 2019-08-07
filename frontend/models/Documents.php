@@ -11,7 +11,6 @@ use Yii;
  * @property string $doc_date วันที่ออกเอกสาร
  * @property string $type
  * @property string $plan
- * @property string $from
  * @property string $do
  * @property int $supplier_id
  * @property int $amt
@@ -40,10 +39,10 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['doc_date', 'type', 'from', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
+            [['doc_date', 'type', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
             [['do', 'for'], 'string'],
             [['supplier_id', 'amt'], 'integer'],
-            [['doc_date', 'type', 'plan', 'from', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
+            [['doc_date', 'type', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
             [['supplier_id'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['supplier_id' => 'id']],
         ];
     }
@@ -58,7 +57,6 @@ class Documents extends \yii\db\ActiveRecord
             'doc_date' => 'Doc Date',
             'type' => 'Type',
             'plan' => 'Plan',
-            'from' => 'From',
             'do' => 'Do',
             'supplier_id' => 'Supplier ID',
             'amt' => 'Amt',
