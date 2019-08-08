@@ -61,8 +61,22 @@ $formatter = \Yii::$app->formatter;
 </p>
 <br>
 <br>
-<p style="padding-left: 8.5cm; margin: 0px;">(นายจิราวัฒน์  นางาม)</p>
-<p style="padding-left: 8.5cm; margin: 0px;">วันที่ <?=$document->doc_date?></p>
+<table width="100%">
+    <tr>
+        <td width="40%"></td>
+        <td align="center">
+            (นายจิราวัฒน์  นางาม)
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td width="40%"></td>
+        <td align="center">
+            วันที่ <?=$document->doc_date?>
+        </td>
+        <td></td>
+    </tr>
+</table>
 <br>
 <p style="margin: 0px;">เรียน  ผู้อำนวยการโรงเรียนลิ้นฟ้าพิทยาคม</p>
 <p style="padding-left: 1cm; margin: 0px;">โปรดพิจารณา</p>
@@ -73,17 +87,30 @@ $formatter = \Yii::$app->formatter;
 <p style="padding-left: 2cm; margin: 0px;">
     <?=$document->advance_by?> ผู้ทดรองจ่าย
 </p>
-<p style="padding-left: 5cm;">(ลงชื่อ)............................เจ้าหน้าที่</p>
-<p style="padding-left: 5cm;">(ลงชื่อ)............................หัวหน้าเจ้าหน้าที่</p>
-<p style="padding-left: 5cm;">(ลงชื่อ)............................หัวหน้าฝ่ายอำนวยการ</p>
+<p style="padding-left: 5cm;">(ลงชื่อ..........................................เจ้าหน้าที่</p>
+<p style="padding-left: 5cm;">(ลงชื่อ..........................................หัวหน้าเจ้าหน้าที่</p>
+<p style="padding-left: 5cm;">(ลงชื่อ..........................................หัวหน้าฝ่ายอำนวยการ</p>
 <p style="padding-left: 6cm; margin: 0px;">(นางวิลัย  ชิณวงศ์)</p>
-<p style="padding-left: 8.5cm; margin: 0px;">- เห็นชอบ</p>
-<p style="padding-left: 8.5cm; margin: 0px;">- อนุมัติ</p>
+<p style="padding-left: 7cm; margin: 0px;">- เห็นชอบ</p>
+<p style="padding-left: 7cm; margin: 0px;">- อนุมัติ</p>
 <br>
-<p style="padding-left: 7cm; margin: 0px;">(ลงชื่อ)............................ผู้อำนวยการโรงเรียน</p>
-<p style="padding-left: 8cm; margin: 0px;">(นางวันดี  พรหมมา)</p>
-<p style="padding-left: 7.8cm; margin: 0px;">วันที่ <?=$document->doc_date?></p>
-
+<table width="100%">
+    <tr>
+        <td width="40%"></td>
+        <td align="center">(ลงชื่อ)..........................................</td>
+        <td>ผู้อำนวยการโรงเรียน</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td align="center">(นางวันดี  พรหมมา)</td>  
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td align="center">วันที่ <?=$document->doc_date?></td>
+        <td></td>
+    </tr>
+</table>
 
 <pagebreak />
 

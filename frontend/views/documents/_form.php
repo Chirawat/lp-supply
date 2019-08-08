@@ -12,6 +12,8 @@ use yii\jui\AutoComplete;
 <div class="documents-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    
+    <?= $form->field($model, 'id')?>
 
     <?= $form->field($model, 'doc_date')->widget(\yii\jui\DatePicker::class, [
         'language' => 'th',

@@ -1,6 +1,7 @@
 table, th, td {
     /* border: 1px solid black; */
     line-height: 18px;
+    /* word-wrap:normal; */
 }
 
 .border1px tr td {

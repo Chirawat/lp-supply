@@ -39,10 +39,11 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['doc_date', 'type', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
+            [['id', 'doc_date', 'type', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
+            [['id', 'supplier_id', 'amt'], 'integer'],
             [['do', 'for'], 'string'],
-            [['supplier_id', 'amt'], 'integer'],
             [['doc_date', 'type', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
+            [['id'], 'unique'],
             [['supplier_id'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['supplier_id' => 'id']],
         ];
     }

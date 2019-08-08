@@ -36,7 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'plan',
             //'from',
             'do:ntext',
-            'supplier_id',
+            //'supplier_id',
+            [
+                'label' => 'ร้านค้า',
+                'value' => $model->supplier->name,
+            ],
             'amt',
             'invoice_id',
             'invoice_date',

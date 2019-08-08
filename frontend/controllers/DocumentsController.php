@@ -70,6 +70,7 @@ class DocumentsController extends Controller
 
         if ($model->load(Yii::$app->request->post())){ 
             // var_dump(Yii::$app->request->post());
+            // var_dump($model);
             // die();
             $supplier = Supplier::find()->where([
                 'name' => Yii::$app->request->post('Documents')['supplier'],
