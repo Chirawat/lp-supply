@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Documents;
+use frontend\models\Description;
 use frontend\models\Supplier;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -53,8 +54,16 @@ class DocumentsController extends Controller
      */
     public function actionView($id)
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Description::find()->where([
+                'document_id' => $id,
+            ]),
+        ]);
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
         ]);
     }
 

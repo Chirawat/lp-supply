@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Documents */
@@ -24,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('add description', ['description/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('report', ['report/document-report', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
@@ -49,5 +51,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'position',
         ],
     ]) ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            // 'id',
+            //'document_id',
+            'item',
+            'quantity',
+            'unit',
+            'unit_price',
+            'price',
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'controller' => 'description'
+            ],
+        ],
+    ]); ?>
 
 </div>
