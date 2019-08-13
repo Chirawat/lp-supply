@@ -87,9 +87,9 @@ $formatter = \Yii::$app->formatter;
 <p style="padding-left: 2cm; margin: 0px;">
     <?=$document->advance_by?> ผู้ทดรองจ่าย
 </p>
-<p style="padding-left: 5cm;">(ลงชื่อ..........................................เจ้าหน้าที่</p>
-<p style="padding-left: 5cm;">(ลงชื่อ..........................................หัวหน้าเจ้าหน้าที่</p>
-<p style="padding-left: 5cm;">(ลงชื่อ..........................................หัวหน้าฝ่ายอำนวยการ</p>
+<p style="padding-left: 5cm;">(ลงชื่อ)..........................................เจ้าหน้าที่</p>
+<p style="padding-left: 5cm;">(ลงชื่อ)..........................................หัวหน้าเจ้าหน้าที่</p>
+<p style="padding-left: 5cm;">(ลงชื่อ)..........................................หัวหน้าฝ่ายอำนวยการ</p>
 <p style="padding-left: 6cm; margin: 0px;">(นางวิลัย  ชิณวงศ์)</p>
 <p style="padding-left: 7cm; margin: 0px;">- เห็นชอบ</p>
 <p style="padding-left: 7cm; margin: 0px;">- อนุมัติ</p>
@@ -139,7 +139,7 @@ $formatter = \Yii::$app->formatter;
     </tr>
 </table>
 <p style="text-indent: 2.5cm; padding-bottom: 6pt;">
-    ข้าพเจ้าขอเบิกพัสดุซื้อวัสดุ ในรายการ<?=$document->plan?>  ตามรายการดังต่อไปนี้
+    ข้าพเจ้าขอเบิกพัสดุเพื่อ <?=$document->for?>  ตามรายการดังต่อไปนี้
 </p>
 <table width="100%" class="border1px">
     <tr>
@@ -156,7 +156,7 @@ $formatter = \Yii::$app->formatter;
             <td>&nbsp;<?=$description->item?></td>
             <td align="center"><?=$description->quantity?></td>
             <td align="center"><?=$description->unit?></td>
-            <td align="center"><?=$description->price?></td>
+            <td align="center"><?=$formatter->asDecimal($description->price)?></td>
             <td></td>
         </tr>
     <?php endforeach; ?>

@@ -11,28 +11,50 @@ use yii\jui\AutoComplete;
 
 <div class="documents-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        // 'options' => [
+        //     'class' => 'form-inline'
+        // ]
+    ]); ?>
     
-    <?= $form->field($model, 'id')?>
+    <div class="row">
+        <div class="col-sm-6">
+            <?= $form->field($model, 'id')->textInput()?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'doc_date')->textInput()
+            // widget(\yii\jui\DatePicker::class, [
+            //     'language' => 'th',
+            //     'dateFormat' => 'dd-MM-yyyy',
+            //     'options' => [
+            //         'class' => 'form-control'
+            //     ]
+            // ]) 
+            ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'doc_date')->widget(\yii\jui\DatePicker::class, [
-        'language' => 'th',
-        'dateFormat' => 'dd-MM-yyyy',
-    ]) ?>
+    <div class="form-group">
 
-    <?= $form->field($model, 'type')->dropDownList([
-        'JS' => 'จัดซื้อ',
-        'JJ' => 'จัดจ้าง',
-    ]);?>
+        <?= $form->field($model, 'type')->dropDownList([
+            'JS' => 'จัดซื้อ',
+            'JJ' => 'จัดจ้าง',
+
+        ]);?>
+
+    </div>
 
     <?= $form->field($model, 'plan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'do')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'do')->textInput() ?>
 
     <?= $form->field($model, 'supplier')->widget(\yii\jui\AutoComplete::classname(), [
         'clientOptions' => [
             'source' => array_column($suppliers,'name'),
         ],
+        'options' => [
+            'class' => 'form-control'
+        ]
     ]) ?>
 
     <?= $form->field($model, 'amt')->textInput() ?>
@@ -41,7 +63,7 @@ use yii\jui\AutoComplete;
 
     <?= $form->field($model, 'invoice_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'for')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'for')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'advance_by')->textInput(['maxlength' => true]) ?>
 
