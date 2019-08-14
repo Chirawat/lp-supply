@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Documents';
+$this->title = 'ทะเบียนคุมการจัดซื้อ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="documents-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Documents', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('สร้างเอกสารใหม่', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'doc_date',
-            'type',
+            //'type',
             'plan',
             //'from',
             //'do:ntext',
@@ -34,7 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'ร้านค้า',
                 'value' => 'supplier.name',
             ],
-            'amt',
+            [
+                'label' => 'จำนวน',
+                'value' => function($data) {
+                    return \Yii::$app->formatter->asDecimal($data->amt);
+                }
+            ],
             //'invoice_id',
             //'invoice_date',
             //'for:ntext',

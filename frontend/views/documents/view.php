@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Documents */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Documents', 'url' => ['index']];
+$this->title = $model->id . '-' . $model->plan;
+$this->params['breadcrumbs'][] = ['label' => 'ทะเบียนคุมการจัดซื้อ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -32,9 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'doc_date',
-            'type',
+            //'type',
             'plan',
             //'from',
             'do:ntext',
@@ -43,12 +43,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'ร้านค้า',
                 'value' => $model->supplier->name,
             ],
-            'amt',
+            [
+                'label' => 'จำนวน',
+                'value'=>  function($data) {
+                    return \Yii::$app->formatter->asDecimal($data->amt);
+                }
+            ],
             'invoice_id',
             'invoice_date',
             'for:ntext',
             'advance_by',
-            'position',
+            //'position',
         ],
     ]) ?>
 

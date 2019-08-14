@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Documents */
 
-$this->title = 'Create Documents';
-$this->params['breadcrumbs'][] = ['label' => 'Documents', 'url' => ['index']];
+$this->title = 'สร้างเอกสารใหม่';
+$this->params['breadcrumbs'][] = ['label' => 'ทะเบียนคุมการจัดซื้อ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="documents-create">
