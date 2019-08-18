@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Supplier */
+/* @var $model frontend\models\Documentsjj */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Suppliers', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Documentsjjs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="supplier-view">
+<div class="documentsjj-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -24,20 +24,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('เสร็จสิ้น', ['documents/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'name:ntext',
-            'adress:ntext',
-            'district',
-            'province',
-            'tax_id',
-            'phone',
+            'doc_date',
             'type',
+            'plan',
+            'do:ntext',
+            'supplier_id',
+            'amt',
+            'invoice_id',
+            'invoice_date',
+            'for:ntext',
+            'advance_by',
+            'position',
         ],
     ]) ?>
 

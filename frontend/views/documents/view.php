@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
         <?= Html::a('add description', ['description/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('report', ['report/document-report', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('หน้าหลัก', ['index', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
     </p>
 
     <?= DetailView::widget([

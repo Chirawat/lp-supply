@@ -5,7 +5,7 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "documents".
+ * This is the model class for table "documents_jj".
  *
  * @property int $id
  * @property string $doc_date วันที่ออกเอกสาร
@@ -20,17 +20,16 @@ use Yii;
  * @property string $advance_by
  * @property string $position ตำแหน่ง
  *
- * @property Description[] $descriptions
  * @property Supplier $supplier
  */
-class Documents extends \yii\db\ActiveRecord
+class DocumentsJj extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'documents';
+        return 'documents_jj';
     }
 
     /**
@@ -39,11 +38,10 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'doc_date', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
-            [['id', 'supplier_id'], 'integer'],
-            [['amt'], 'number'],
+            [['id', 'doc_date', 'type', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
+            [['id', 'supplier_id', 'amt'], 'integer'],
             [['do', 'for'], 'string'],
-            [['doc_date', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
+            [['doc_date', 'type', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
             [['id'], 'unique'],
             [['supplier_id'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['supplier_id' => 'id']],
         ];
@@ -55,27 +53,19 @@ class Documents extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'เลขที่เอกสาร',
-            'doc_date' => 'วันที่ออกเอกสาร',
-            //'type' => 'Type',
-            'plan' => 'โครงการ',
+            'id' => 'ID',
+            'doc_date' => 'Doc Date',
+            'type' => 'Type',
+            'plan' => 'Plan',
             'do' => 'Do',
             'supplier_id' => 'Supplier ID',
-            'amt' => 'จำนวนเงิน',
-            'invoice_id' => 'เลขที่ใบเสร็จ',
-            'invoice_date' => 'วันที่ออกใบเสร็จ',
+            'amt' => 'Amt',
+            'invoice_id' => 'Invoice ID',
+            'invoice_date' => 'Invoice Date',
             'for' => 'For',
-            'advance_by' => 'สำรองจ่ายโดย',
-            'position' => 'ตำแหน่ง',
+            'advance_by' => 'Advance By',
+            'position' => 'Position',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDescriptions()
-    {
-        return $this->hasMany(Description::className(), ['document_id' => 'id']);
     }
 
     /**

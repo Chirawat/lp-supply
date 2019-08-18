@@ -27,7 +27,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('บันทึก', ['class' => 'btn btn-success']) ?>
+        <?= Html::a('ยกเลิก', ['documents/create', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

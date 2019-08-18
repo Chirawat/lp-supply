@@ -3,18 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Documents;
-use frontend\models\Description;
-use frontend\models\Supplier;
+use frontend\models\Documentsjj;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DocumentsController implements the CRUD actions for Documents model.
+ * DocumentsjjController implements the CRUD actions for Documentsjj model.
  */
-class DocumentsController extends Controller
+class DocumentsjjController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,13 +30,13 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Lists all Documents models.
+     * Lists all Documentsjj models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Documents::find(),
+            'query' => Documentsjj::find(),
         ]);
 
         return $this->render('index', [
@@ -47,56 +45,38 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Displays a single Documents model.
+     * Displays a single Documentsjj model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Description::find()->where([
-                'document_id' => $id,
-            ]),
-        ]);
-
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Documents model.
+     * Creates a new Documentsjj model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Documents();
-        $suppliers = Supplier::find()->all();
+        $model = new Documentsjj();
 
-        if ($model->load(Yii::$app->request->post())){ 
-            $supplier = Supplier::find()->where([
-                'name' => Yii::$app->request->post('Documents')['supplier'],
-            ])->one();
-            $model->supplier_id = $supplier['id'];
-            if($model->validate()){
-                $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-        $last_record = Documents::find()->orderBy(['id' => SORT_DESC])->one();
-        $model['id'] = $last_record['id'] + 1;
+
         return $this->render('create', [
             'model' => $model,
-            'suppliers' => $suppliers,
         ]);
     }
 
     /**
-     * Updates an existing Documents model.
+     * Updates an existing Documentsjj model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -105,7 +85,6 @@ class DocumentsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $suppliers = Supplier::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -113,12 +92,11 @@ class DocumentsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'suppliers' => $suppliers,
         ]);
     }
 
     /**
-     * Deletes an existing Documents model.
+     * Deletes an existing Documentsjj model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -132,15 +110,15 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Finds the Documents model based on its primary key value.
+     * Finds the Documentsjj model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Documents the loaded model
+     * @return Documentsjj the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Documents::findOne($id)) !== null) {
+        if (($model = Documentsjj::findOne($id)) !== null) {
             return $model;
         }
 

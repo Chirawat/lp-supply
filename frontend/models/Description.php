@@ -12,8 +12,8 @@ use Yii;
  * @property string $item
  * @property string $quantity
  * @property string $unit
- * @property string $unit_price
- * @property string $price
+ * @property double $unit_price
+ * @property double $price
  *
  * @property Documents $document
  */
@@ -35,7 +35,8 @@ class Description extends \yii\db\ActiveRecord
         return [
             [['document_id', 'item', 'quantity', 'unit_price', 'price'], 'required'],
             [['document_id'], 'integer'],
-            [['item', 'quantity', 'unit', 'unit_price', 'price'], 'string', 'max' => 45],
+            [['unit_price', 'price'], 'number'],
+            [['item', 'quantity', 'unit'], 'string', 'max' => 45],
             [['document_id'], 'exist', 'skipOnError' => true, 'targetClass' => Documents::className(), 'targetAttribute' => ['document_id' => 'id']],
         ];
     }

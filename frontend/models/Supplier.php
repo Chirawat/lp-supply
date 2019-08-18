@@ -36,7 +36,8 @@ class Supplier extends \yii\db\ActiveRecord
         return [
             [['name', 'adress', 'district', 'province', 'type'], 'required'],
             [['name', 'adress'], 'string'],
-            [['district', 'province', 'tax_id', 'phone', 'type'], 'string', 'max' => 45],
+            [['district', 'province', 'phone', 'type'], 'string', 'max' => 45],
+            ['tax_id', 'string', 'length'=>13]
         ];
     }
 
@@ -47,7 +48,7 @@ class Supplier extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'ร้านค้า',
             'adress' => 'Adress',
             'district' => 'District',
             'province' => 'Province',

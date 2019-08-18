@@ -3,6 +3,12 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
+use frontend\models\Supplier;
+use yii\helpers\ArrayHelper;
+$suppliers=Supplier::find()->all();
+
+
+$listData=ArrayHelper::map($suppliers,'id','name');
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Documents */
@@ -16,10 +22,29 @@ use yii\jui\AutoComplete;
         //     'class' => 'form-inline'
         // ]
     ]); ?>
-    
+
+    <div class="form-group">
+        <!-- <?= $form->field($model, 'supplier')->dropDownList(
+            $listData,
+            ['prompt'=>'Select...']
+        );?> -->
+
+
+        <?= $form->field($model, 'supplier')->widget(\yii\jui\AutoComplete::classname(), [
+        'clientOptions' => [
+            'source' => array_column($suppliers,'name'),
+        ],
+        'options' => [
+            'class' => 'form-control'
+        ]
+    ]) ?>
+        <?= Html::a('เพิ่มร้านค้าใหม่', ['supplier/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    </div>
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'id')->textInput()?>
+            <?= $form->field($model, 'id')->textInput([
+                'readonly' => true,
+            ])?>
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'doc_date')->textInput()
@@ -34,43 +59,27 @@ use yii\jui\AutoComplete;
         </div>
     </div>
 
-    <div class="form-group">
-
-        <?= $form->field($model, 'type')->dropDownList([
-            'JS' => 'จัดซื้อ',
-            'JJ' => 'จัดจ้าง',
-
-        ]);?>
-
-    </div>
+    <div class="form-group">    
 
     <?= $form->field($model, 'plan')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'do')->textInput() ?>
 
-    <?= $form->field($model, 'supplier')->widget(\yii\jui\AutoComplete::classname(), [
-        'clientOptions' => [
-            'source' => array_column($suppliers,'name'),
-        ],
-        'options' => [
-            'class' => 'form-control'
-        ]
-    ]) ?>
-
-    <?= $form->field($model, 'amt')->textInput() ?>
+    <?= $form->field($model, 'for')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'invoice_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'invoice_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'for')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'amt')->textInput() ?>
 
     <?= $form->field($model, 'advance_by')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('บันทึก', ['class' => 'btn btn-success']) ?>
+        <?= Html::a('ยกเลิก', ['index', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
