@@ -63,9 +63,9 @@ $listData=ArrayHelper::map($suppliers,'id','name');
 
     <?= $form->field($model, 'plan')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'do')->textInput() ?>
-
     <?= $form->field($model, 'for')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'do')->textInput() ?>
 
     <?= $form->field($model, 'invoice_id')->textInput(['maxlength' => true]) ?>
 

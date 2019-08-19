@@ -78,4 +78,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+    
+    ราคารวม <?=array_sum(array_column($descriptions, 'price'))?>
+
+
 </div>

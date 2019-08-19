@@ -23,7 +23,8 @@ class ReportController extends \yii\web\Controller
     public function actionDocumentReport($id){
         $document = Documents::find()->where(['id' => $id])->one();
         $descriptions = $document->descriptions;
-        $total = array_sum(array_column($descriptions, 'price'));
+        //$total = array_sum(array_column($descriptions, 'price'));
+        $total = $document->amt;
         // var_dump($descriptions);
         // die();
         $content = $this->renderPartial('_reportView', [

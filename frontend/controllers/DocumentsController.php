@@ -10,6 +10,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\controllers\Common;
 
 /**
  * DocumentsController implements the CRUD actions for Documents model.
@@ -54,15 +55,17 @@ class DocumentsController extends Controller
      */
     public function actionView($id)
     {
+        $descriptions = Description::find()->where([
+            'document_id' => $id,
+        ]);
         $dataProvider = new ActiveDataProvider([
-            'query' => Description::find()->where([
-                'document_id' => $id,
-            ]),
+            'query' => $descriptions,
         ]);
 
 
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'descriptions' => $descriptions->all(),
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -89,6 +92,7 @@ class DocumentsController extends Controller
         }
         $last_record = Documents::find()->orderBy(['id' => SORT_DESC])->one();
         $model['id'] = $last_record['id'] + 1;
+        $model['doc_date'] = Common::DateThai(date("Y/m/d"));
         return $this->render('create', [
             'model' => $model,
             'suppliers' => $suppliers,
