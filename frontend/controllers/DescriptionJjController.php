@@ -3,19 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\DocumentsJj;
 use frontend\models\DescriptionJj;
-use frontend\models\Supplier;
-use frontend\controllers\Common;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DocumentsJjController implements the CRUD actions for DocumentsJj model.
+ * DescriptionJjController implements the CRUD actions for DescriptionJj model.
  */
-class DocumentsJjController extends Controller
+class DescriptionJjController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -33,13 +30,13 @@ class DocumentsJjController extends Controller
     }
 
     /**
-     * Lists all DocumentsJj models.
+     * Lists all DescriptionJj models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => DocumentsJj::find(),
+            'query' => DescriptionJj::find(),
         ]);
 
         return $this->render('index', [
@@ -48,68 +45,42 @@ class DocumentsJjController extends Controller
     }
 
     /**
-     * Displays a single DocumentsJj model.
+     * Displays a single DescriptionJj model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $descriptions = DescriptionJj::find()->where([
-            'documents_jj_id' => $id,
-        ]);
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $descriptions,
-        ]);
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'descriptions' => $descriptions->all(),
-            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new DocumentsJj model.
+     * Creates a new DescriptionJj model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
-        $model = new DocumentsJj();
-        $suppliers = Supplier::find()->all();
+        $model = new DescriptionJj();
 
-        if ($model->load(Yii::$app->request->post())) {
-            // var_dump(Yii::$app->request->post());
-            // die();
-            $supplier = Supplier::find()->where([
-                'name' => Yii::$app->request->post('DocumentsJj')['supplier'],
-            ])->one();
-            $model->supplier_id = $supplier['id'];
-            if($model->validate()){
-                $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-            else{
-                return vardump($model->errors);
-                die();
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect([
+                'documents-jj/view', 
+                'id' => $model->documents_jj_id]
+            );
         }
-
-        $last_record = DocumentsJj::find()->orderBy(['id' => SORT_DESC])->one();
-        $model['id'] = $last_record['id'] + 1;
-        $model['doc_date'] = Common::DateThai(date("Y/m/d"));
-
+        $model->documents_jj_id = $id; 
         return $this->render('create', [
             'model' => $model,
-            'suppliers' => $suppliers,
         ]);
     }
 
     /**
-     * Updates an existing DocumentsJj model.
+     * Updates an existing DescriptionJj model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -120,7 +91,8 @@ class DocumentsJjController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['documents-jj/view', 'id' => $model->documents_jj_id]);
         }
 
         return $this->render('update', [
@@ -129,7 +101,7 @@ class DocumentsJjController extends Controller
     }
 
     /**
-     * Deletes an existing DocumentsJj model.
+     * Deletes an existing DescriptionJj model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -137,21 +109,26 @@ class DocumentsJjController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
-        return $this->redirect(['index']);
+        //return $this->redirect(['index']);
+        return $this->redirect([
+            'documents-jj/view', 
+            'id' => $model->documents_jj_id
+        ]);
     }
 
     /**
-     * Finds the DocumentsJj model based on its primary key value.
+     * Finds the DescriptionJj model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return DocumentsJj the loaded model
+     * @return DescriptionJj the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = DocumentsJj::findOne($id)) !== null) {
+        if (($model = DescriptionJj::findOne($id)) !== null) {
             return $model;
         }
 

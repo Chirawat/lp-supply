@@ -9,11 +9,10 @@ use Yii;
  *
  * @property int $id
  * @property string $doc_date วันที่ออกเอกสาร
- * @property string $type
  * @property string $plan
  * @property string $do
  * @property int $supplier_id
- * @property int $amt
+ * @property double $amt
  * @property string $invoice_id
  * @property string $invoice_date
  * @property string $for
@@ -38,10 +37,11 @@ class DocumentsJj extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'doc_date', 'type', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
-            [['id', 'supplier_id', 'amt'], 'integer'],
+            [['id', 'doc_date', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
+            [['id', 'supplier_id'], 'integer'],
             [['do', 'for'], 'string'],
-            [['doc_date', 'type', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
+            [['amt'], 'number'],
+            [['doc_date', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
             [['id'], 'unique'],
             [['supplier_id'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['supplier_id' => 'id']],
         ];
@@ -53,18 +53,31 @@ class DocumentsJj extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'doc_date' => 'Doc Date',
-            'type' => 'Type',
-            'plan' => 'Plan',
-            'do' => 'Do',
+            // 'id' => 'ID',
+            // 'doc_date' => 'Doc Date',
+            // 'plan' => 'Plan',
+            // 'do' => 'Do',
+            // 'supplier_id' => 'Supplier ID',
+            // 'amt' => 'Amt',
+            // 'invoice_id' => 'Invoice ID',
+            // 'invoice_date' => 'Invoice Date',
+            // 'for' => 'For',
+            // 'advance_by' => 'Advance By',
+            // 'position' => 'Position',
+
+
+            'id' => 'เลขที่เอกสาร',
+            'doc_date' => 'วันที่ออกเอกสาร',
+            //'type' => 'Type',
+            'plan' => 'โครงการ',
+            'for' => 'กิจกรรม',
+            'do' => 'ใช้ทำอะไร',
             'supplier_id' => 'Supplier ID',
-            'amt' => 'Amt',
-            'invoice_id' => 'Invoice ID',
-            'invoice_date' => 'Invoice Date',
-            'for' => 'For',
-            'advance_by' => 'Advance By',
-            'position' => 'Position',
+            'amt' => 'จำนวนเงิน',
+            'invoice_id' => 'เลขที่ใบเสร็จ',
+            'invoice_date' => 'วันที่ออกใบเสร็จ',
+            'advance_by' => 'สำรองจ่ายโดย',
+            'position' => 'ตำแหน่ง',
         ];
     }
 
