@@ -88,4 +88,9 @@ class DocumentsJj extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Supplier::className(), ['id' => 'supplier_id']);
     }
+
+    public function getDescriptionJjs()
+    {
+        return $this->hasMany(DescriptionJj::className(), ['documents_jj_id' => 'id']);
+    }
 }

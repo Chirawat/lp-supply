@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model frontend\models\DescriptionJj */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Description Jjs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'เพิ่มรายการจ้าง', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

@@ -22,7 +22,7 @@ class ReportJjController extends \yii\web\Controller
 
     public function actionDocumentJjReport($id){
         $document = DocumentsJj::find()->where(['id' => $id])->one();
-        $descriptions = $document->descriptions_jj;
+        $descriptions = $document->descriptionJjs;
         //$total = array_sum(array_column($descriptions, 'price'));
         $total = $document->amt;
         // var_dump($descriptions);

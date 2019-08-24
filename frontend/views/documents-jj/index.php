@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'ทะเบียนคุมการจัดซื้อ';
+$this->title = 'ทะเบียนคุมการจัดจ้าง';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="documents-index">

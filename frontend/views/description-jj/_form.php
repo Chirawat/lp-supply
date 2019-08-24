@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'documents_jj_id')->textInput() ?>
+    <?= $form->field($model, 'documents_jj_id')->hiddenInput(['readonly'=>true])->label(false)?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

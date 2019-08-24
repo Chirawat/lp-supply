@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $model frontend\models\Documents */
 
 $this->title = $model->id . '-' . $model->plan;
-$this->params['breadcrumbs'][] = ['label' => 'ทะเบียนคุมการจัดซื้อ', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'ทะเบียนคุมการจัดจ้าง', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
