@@ -51,7 +51,7 @@ $formatter = \Yii::$app->formatter;
     </tr>
 </table>
 <p style="text-indent: 2.5cm;">
-    ด้วยโรงเรียนลิ้นฟ้าพิทยาคม  ได้ดำเนินการ<?=$document->do?> เพื่อใช้ในโครงการ <?=$document->plan?> จาก <?=$document->supplier->name?> จำนวน <?=$description_count?> รายการ เป็นจำนวนเงิน <?=$formatter->asDecimal($total)?> บาท (<?= $bahttext ?>)  ตาม<?php $document->invoice_id == '-' ? print('ใบสำคัญรับเงิน'): print('ใบเสร็จรับเงิน เลขที่' . $document->invoice_id)?> ลงวันที่ <?=$document->invoice_date?>
+    ด้วยโรงเรียนลิ้นฟ้าพิทยาคม  ได้ดำเนินการ<?=$document->do?> เพื่อใช้ในโครงการ <?=$document->plan?> กิจกรรม <?=$document->for?> จาก <?=$document->supplier->name?> จำนวน <?=$description_count?> รายการ เป็นจำนวนเงิน <?=$formatter->asDecimal($total)?> บาท (<?= $bahttext ?>)  ตาม<?php $document->invoice_id == '-' ? print('ใบสำคัญรับเงิน'): print('ใบเสร็จรับเงิน เลขที่ ' . $document->invoice_id)?> ลงวันที่ <?=$document->invoice_date?>
 </p>
 <p style="text-indent: 2.5cm;">
     ทั้งนี้  การดำเนินการจัดซื้อดังกล่าว เป็นการดำเนินการตามหนังสือด่วนที่สุด ที่ กค (กวจ) 0405.2/ว 119  ลงวันที่ 7 มีนาคม 2561 เรื่อง แนวทางการปฏิบัติในการดำเนินการจัดหาพัสดุที่เกี่ยวกับ ค่าใช้จ่ายในการบริหารงาน ค่าใช้จ่ายในการฝึกอบรม การจัดงาน และการประชุมของหน่วยงานของรัฐ

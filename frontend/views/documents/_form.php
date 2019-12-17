@@ -78,6 +78,10 @@ $listData=ArrayHelper::map($suppliers,'id','name');
 
     <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'year')->textInput() ?>
+
+    <?= $form->field($model, 'doc_id')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton('บันทึก', ['class' => 'btn btn-success']) ?>
         <?= Html::a('ยกเลิก', ['index', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>

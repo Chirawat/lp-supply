@@ -79,6 +79,7 @@ class DocumentsController extends Controller
     {
         $model = new Documents();
         $suppliers = Supplier::find()->all();
+        
 
         if ($model->load(Yii::$app->request->post())){ 
             $supplier = Supplier::find()->where([
@@ -91,8 +92,13 @@ class DocumentsController extends Controller
             }
         }
         $last_record = Documents::find()->orderBy(['id' => SORT_DESC])->one();
+        $last_record_by_year = Documents::find()
+            ->where(['year'=>2563])
+            ->orderBy(['id' => SORT_DESC])->count();
         $model['id'] = $last_record['id'] + 1;
         $model['doc_date'] = Common::DateThai(date("Y/m/d"));
+        $model['year'] = 2563;
+        $model['doc_id'] = $last_record_by_year + 1;
         return $this->render('create', [
             'model' => $model,
             'suppliers' => $suppliers,

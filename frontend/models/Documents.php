@@ -40,7 +40,7 @@ class Documents extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'doc_date', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
-            [['id', 'supplier_id'], 'integer'],
+            [['id', 'supplier_id','year', 'doc_id'], 'integer'],
             [['amt'], 'number'],
             [['do', 'for'], 'string'],
             [['doc_date', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],
@@ -67,6 +67,8 @@ class Documents extends \yii\db\ActiveRecord
             'invoice_date' => 'วันที่ออกใบเสร็จ',
             'advance_by' => 'สำรองจ่ายโดย',
             'position' => 'ตำแหน่ง',
+            'year' => 'ปีงบประมาณ',
+            'doc_id' => 'เลขที่'
         ];
     }
 
