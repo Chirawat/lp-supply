@@ -37,8 +37,9 @@ class DocumentsJj extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'doc_date', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position'], 'required'],
-            [['id', 'supplier_id'], 'integer'],
+            
+            [['id', 'doc_date', 'supplier_id', 'amt', 'invoice_id', 'invoice_date', 'for', 'advance_by', 'position', 'year', 'doc_id'], 'required'],
+            [['id', 'supplier_id', 'year', 'doc_id'], 'integer'],
             [['do', 'for'], 'string'],
             [['amt'], 'number'],
             [['doc_date', 'plan', 'invoice_id', 'invoice_date', 'advance_by', 'position'], 'string', 'max' => 45],

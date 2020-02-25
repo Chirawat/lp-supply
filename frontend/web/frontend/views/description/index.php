@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'แก้ไขประเภทวัสดุ';
+$this->title = 'Descriptions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="description-index">
@@ -15,8 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Description', ['create'], ['class' => 'btn btn-success']) ?>
-
-        <?= Html::a('พิมพ์บัญชีวัสดุ', ['report'], ['class' => 'btn btn-success'])?>
     </p>
 
 
@@ -26,24 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            //'document_id',
+            'document_id',
             'item',
-            //'quantity',
+            'quantity',
             'unit',
-            'unit_price',
-            [
-                'label' => 'ประเภทวัสดุ',
-                'value' => function($model){
-                    return $model->pSDGroup['Name'];
-                }
-            ],
+            //'unit_price',
             //'price',
-            [
-                'label' => 'ชนิดวัสดุ',
-                'value' => function($model){
-                    return $model->pSDType['Type_Name'];
-                }
-            ],
+            //'PSD_Type_Id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
