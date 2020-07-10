@@ -75,8 +75,8 @@ class DescriptionController extends Controller
         $model['document_id'] = $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //return $this->redirect(['view', 'id' => $model->id, 'PSD_Type_Id' => $model->PSD_Type_Id]);
-            return $this->redirect(['documents/index']);
+            return $this->redirect(['documents/view', 'id' => $model->document_id]);
+            //return $this->redirect(['documents/view']);
         }
 
         return $this->render('create', [
